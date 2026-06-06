@@ -39,9 +39,9 @@ function getInfoEmployee(isAdd) {
                validation.checkWorkDate(startDate, "tbNgay", "Vui lòng chọn đầy đủ theo định dạng mm/dd/yyyy");
 
     isValid &= validation.checkEmpty(basicSalary, "tbLuongCB", "Lương CB không được bỏ trống") &&
-               validation.checkSalary(basicSalary, "tbLuongCB", "Lương không được thấp hơn 1.000.000", "Lương không lương không quá cao trên 20.000.000");
+               validation.checkSalary(basicSalary, "tbLuongCB", "Lương CB không được thấp hơn 1.000.000", "Lương CB không quá cao trên 20.000.000");
 
-    isValid &= validation.checkSelectPostion("chucvu", "tbChucVu", "Bạn chưa chọn vị trí chức vụ");
+    isValid &= validation.checkSelectPostion("chucvu", "tbChucVu", "Bạn chưa chọn chức vụ");
 
     isValid &= validation.checkEmpty(timeWork, "tbGiolam", "Giờ làm không được bỏ trống") &&
                validation.checkWorkTime(timeWork, "tbGiolam", "Chỉ cho phép nhập từ phạm vi 80 - 200 giờ");
@@ -194,4 +194,11 @@ getID("btnCapNhat").onclick = function () {
     setLocalStorage();
 
     $('#myModal').modal('hide');
+}
+
+// Tạo chức năng lọc sản phẩm
+getID("btnTimNV").onclick = function () {
+    const searchName = getID("searchName").value;
+    const filterEmployee = employeeManager.filterEmployee(searchName);
+    renderListEmployee(filterEmployee);
 }

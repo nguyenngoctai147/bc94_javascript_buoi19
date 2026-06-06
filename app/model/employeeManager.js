@@ -40,6 +40,23 @@ class EmployeeManager {
             return this.arrEmployee[index] = employee;
         }
     }
+
+    filterEmployee (rating) {
+        if(rating === "") {
+            return this.arrEmployee;
+        }
+
+        let arrFilter = [];
+
+        for(let i = 0; i < this.arrEmployee.length; i++) {
+            const employee = this.arrEmployee[i];
+            if (employee.rating === rating) {
+                arrFilter.push(employee);
+            }
+        }
+
+        return arrFilter;
+    }
 }
 
 export default EmployeeManager;
